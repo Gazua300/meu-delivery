@@ -67,7 +67,8 @@ npm run lint
 
 ## Aplicações relacionadas
 
-- [My Delivery — customer app](https://my-delivery-silk.vercel.app)
-- [My Delivery Provider — store dashboard](https://my-delivery-provider.vercel.app)
-- [My Delivery Server — API documentation](https://my-delivery-server-nine.vercel.app/api-docs/)
-- [Portfolio](https://portfolio-vtu0.onrender.com)
+- [Meu Delivery — Aplicativo para o cliente](https://meu-delivery-eight.vercel.app/)
+- [Meu Delivery Provedor — Painel da loja](https://meu-delivery-provedor.vercel.app/)
+- [SaaS Dashboard — Painel SaaS](https://saa-s-dashboard-eta.vercel.app/)
+- [Meu Delivery Server — Documentação da API](https://meu-delivery-server-tau.vercel.app/api-docs/)
+- [Portfolio](https://meu-porfolio-two.vercel.app/)
