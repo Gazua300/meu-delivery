@@ -43,9 +43,12 @@ export interface Order{
     total:number
     moment:string 
     client:string
-    state:string
+    state:'REQUESTED' | 'FINISHED' | 'EXPIRED' | string
     address:string
     description:string
     paymentmethod:string
+    payment_status?:string | null
+    payment_approved_at?:Date | string | null
+    archived_at?:Date | string | null
     provider:string
 }

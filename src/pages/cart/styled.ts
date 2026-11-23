@@ -216,6 +216,54 @@ export const Container = styled.div`
         text-align: center;
     }
 
+    .copy-pix-btn {
+        padding: 0.5rem 0.85rem;
+        border: 1px solid #00bfa5;
+        border-radius: 6px;
+        background: #e6fffb;
+        color: #00796b;
+        font-size: 0.9rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background-color 0.2s, color 0.2s;
+
+        &:hover {
+            background: #00bfa5;
+            color: #fff;
+        }
+
+        &:focus-visible {
+            outline: 2px solid #00796b;
+            outline-offset: 2px;
+        }
+    }
+
+    .payment-unavailable-warning {
+        margin: 1rem 0;
+        padding: 1rem;
+        border: 1px solid #f59e0b;
+        border-radius: 8px;
+        background: #fffbeb;
+        color: #78350f;
+    }
+
+    .cancel-payment-button {
+        align-self: center;
+        margin: 0.5rem 0 1rem;
+        padding: 0.75rem 1.25rem;
+        border: 0;
+        border-radius: 6px;
+        background: #dc2626;
+        color: #fff;
+        font-weight: 600;
+        cursor: pointer;
+
+        &:disabled {
+            cursor: not-allowed;
+            opacity: 0.6;
+        }
+    }
+
     /* FIXED BOTTOM BAR CONTROL */
     .total-container {
         position: fixed;

@@ -19,6 +19,8 @@ Os clientes navegam por lojas e produtos por meio da API. Os pedidos são regist
 - Cadastre-se, faça login, redefina senhas e acesse páginas restritas.
 - Gerencie um carrinho com itens agrupados por loja, incluindo a possibilidade de alterar quantidades e remover produtos.
 - Realize o checkout utilizando o fluxo de pagamento via Pix ou o formulário de cartão, processado pelo SDK do Mercado Pago.
+- Acompanhe a confirmação do pagamento, recupere um Pix pendente após atualizar a página e cancele o pagamento quando a opção estiver disponível.
+- Enquanto houver um Pix pendente, altere quantidades ou remova itens somente depois de cancelar o pagamento; o carrinho avisa quando essa ação ainda não está liberada.
 - Visualize e edite dados do perfil, endereço de entrega e informações de contato.
 - Preencha automaticamente endereços no Brasil a partir do CEP, utilizando o ViaCEP.
 - Acesse notificações relacionadas à sua conta e aos seus pedidos.
@@ -40,7 +42,7 @@ Requer Node.js e npm. A partir do diretório deste projeto:
 npm install
 ```
 
-Crie um arquivo `.env` na raiz do projeto e defina a URL base para Meu Delivery Server. Para ativar os recursos de pagamento do app, configure também sua chave pública do Mercado Pago:
+Crie um arquivo `.env` na raiz do projeto e defina a URL base para Meu Delivery Server. A chave pública do Mercado Pago é usada pelo formulário de cartão:
 
 ```env
 VITE_BASE_URL=http://localhost:3003
@@ -63,7 +65,7 @@ npm run lint
 
 ## Integrações
 
-`VITE_BASE_URL` deve apontar para a raiz da API — por exemplo, `http://localhost:3003` durante o desenvolvimento local. A API disponibiliza recursos de usuário, loja, pedido e notificação. Os pagamentos são processados ​​pelo servidor por meio do Mercado Pago; o aplicativo oferece o fluxo para Pix e o formulário para cartão.
+`VITE_BASE_URL` deve apontar para a raiz da API — por exemplo, `http://localhost:3003` durante o desenvolvimento local. A API disponibiliza recursos de usuário, loja, pedido e notificação. O Pix e o cartão são processados pelo servidor com as credenciais do Mercado Pago configuradas no backend; `VITE_PUBLIC_KEY_TP` é somente a chave pública usada pelo SDK de cartão no navegador. Nunca coloque o token privado `ACCESS_TOKEN` no frontend. Use credenciais de teste correspondentes ao testar em sandbox.
 
 ## Aplicações relacionadas
 

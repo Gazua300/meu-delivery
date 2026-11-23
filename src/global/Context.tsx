@@ -60,15 +60,27 @@ export const GlobalState = ({ children }:GlobalStateProps)=>{
     const getAllOrders = useCallback(async()=>{
         const config = getAuthHeaders()
         if(!config){
+            setCart([])
             console.warn('getAllOrders: No active token found in localStorage')
             return
         }
 
+        const requestToken = config.headers.Authorization
+
         try{
-            const response = await axios.get(`${BASE_URL}/orders/active`, config)
+            const response = await axios.get<Order[]>(`${BASE_URL}/orders/active`, config)
+            if(localStorage.getItem('token') !== requestToken) return
+
             setCart(response.data)
-        }catch(e:any){
-            console.error('Failed to fetch active orders', e.response?.data || e.message)
+        }catch(error:unknown){
+            if(localStorage.getItem('token') !== requestToken) return
+
+            if(axios.isAxiosError(error) && error.response?.status === 404){
+                setCart([])
+                return
+            }
+
+            console.error('Não foi possível buscar os pedidos ativos:', error)
         }
     }, [])
 
@@ -83,8 +95,8 @@ export const GlobalState = ({ children }:GlobalStateProps)=>{
         try {
             const response = await axios.get(`${BASE_URL}/users/profile`, config)
             setUser(response.data)
-        } catch (e: any) {
-            console.error("Failed to fetch profile:", e.response?.data || e.message)
+        } catch (error: unknown) {
+            console.error("Não foi possível carregar o perfil:", error)
         }
     }, [])
 
